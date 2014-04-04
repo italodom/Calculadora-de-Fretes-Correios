@@ -13,7 +13,6 @@ use Exception;
 use Guzzle\Http\Message\Response;
 use Guzzle\Service\Client;
 use ID\Correios\Calculos\CalculoPrecoPrazo;
-use ID\Correios\Errors;
 use ID\Correios\WsCorreios;
 
 /**
@@ -73,7 +72,7 @@ class CalculadoraFrete
     /**
      * @param float $valorDeclarado
      *
-     * @return \ID\Correios\CalculadoraFrete
+     * @return CalculadoraFrete
      */
     public function setValorDeclarado($valorDeclarado)
     {
@@ -83,15 +82,14 @@ class CalculadoraFrete
     }
 
     /**
-     *
      * @param Response $response
      *
-     * @return Errors|CalculoPrecoPrazo
+     * @return CalculoPrecoPrazo
+     * @throws Exception
      */
     private function getCalculo(Response $response)
     {
-        $xml = simplexml_load_string($response->getBody(true));
-        $retorno = json_decode(json_encode($xml->cServico));
+        $retorno = $this->convertXmlToArray($response);
 
         if ($retorno->Erro != '0') {
             throw new Exception($retorno->MsgErro, $retorno->Erro);
@@ -112,7 +110,7 @@ class CalculadoraFrete
     }
 
     /**
-     * @return \ID\Correios\WsCorreios
+     * @return WsCorreios
      */
     private function getWsCorreios($cepDestino, $peso)
     {
@@ -130,6 +128,17 @@ class CalculadoraFrete
             ->setVlValorDeclarado($this->valorDesclarado);
 
         return $wsCorreios;
+    }
+
+    /**
+     * @param Response $response
+     *
+     * @return array
+     */
+    private function convertXmlToArray(Response $response)
+    {
+        $xml = simplexml_load_string($response->getBody(true));
+        return json_decode(json_encode($xml->cServico));
     }
 
 }
