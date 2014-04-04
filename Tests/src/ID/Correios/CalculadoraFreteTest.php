@@ -60,7 +60,16 @@ class CalculadoraFreteTest extends PHPUnit_Framework_TestCase
      */
     public function testCalcular()
     {
-        $calculo = $this->object->calcular('06870320', 0.500);
+        $mock = $this->getMockBuilder('\ID\Correios\CalculadoraFrete')
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $mock->expects($this->once())
+            ->method('calcular')
+            ->with('06870320', 0.500)
+            ->will($this->returnValue($this->getMock('\ID\Correios\Calculos\CalculoPrecoPrazo')));
+        $calculo = $mock->calcular('06870320', 0.500);
+
         $this->assertInstanceOf('\ID\Correios\Calculos\CalculoPrecoPrazo', $calculo);
     }
 

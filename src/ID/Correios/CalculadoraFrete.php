@@ -12,6 +12,7 @@ namespace ID\Correios;
 use Exception;
 use Guzzle\Http\Message\Response;
 use Guzzle\Service\Client;
+use ID\Correios\CalculadoraFreteInterface;
 use ID\Correios\Calculos\CalculoPrecoPrazo;
 use ID\Correios\WsCorreios;
 
@@ -20,7 +21,7 @@ use ID\Correios\WsCorreios;
  *
  * @author Italo Domingues <italo.domingues1@gmail.com>
  */
-class CalculadoraFrete
+class CalculadoraFrete implements CalculadoraFreteInterface
 {
     /**
      * @var string

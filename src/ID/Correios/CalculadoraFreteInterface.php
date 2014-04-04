@@ -12,6 +12,8 @@ namespace ID\Correios;
 /**
  * Interface para criação de Calculadoras de Fretes
  *
+ * @codeCoverageIgnore
+ *
  * @author Italo Domingues <italo.domingues1@gmail.com>
  */
 interface CalculadoraFreteInterface
