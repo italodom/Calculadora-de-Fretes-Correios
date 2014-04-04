@@ -35,7 +35,7 @@ class CalculadoraFrete
     /**
      * @var float
      */
-    private $valorDeclarado;
+    private $valorDeclarado = 0;
 
     /**
      * @param string $codServico
