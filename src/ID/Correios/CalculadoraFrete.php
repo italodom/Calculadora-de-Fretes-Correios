@@ -125,7 +125,7 @@ class CalculadoraFrete
             ->setVlAltura(0)
             ->setVlLargura(11)
             ->setVlDiametro(0)
-            ->setVlValorDeclarado($this->valorDesclarado);
+            ->setVlValorDeclarado($this->valorDeclarado);
 
         return $wsCorreios;
     }
