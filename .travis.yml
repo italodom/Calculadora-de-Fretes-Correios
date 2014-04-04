@@ -1,9 +1,8 @@
 language: php
+script: bin/phpunit Tests/
 
 php:
   - 5.4
-
-script: bin/phpunit Tests/
 
 before_script:
     - "composer install --dev --verbose"
