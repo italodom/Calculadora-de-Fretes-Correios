@@ -23,6 +23,8 @@ and open the template in the editor.
             <directory>src</directory>
             <exclude>
                 <directory>vendor</directory>
+                <file>src/ID/Correios/CalculadoraFreteInterface.php</file>
+                <file>src/ID/Correios/Formatos.php</file>
             </exclude>
         </whitelist>
     </filter>      
