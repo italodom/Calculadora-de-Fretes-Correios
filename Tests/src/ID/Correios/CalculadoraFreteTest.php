@@ -97,7 +97,7 @@ class CalculadoraFreteTest extends PHPUnit_Framework_TestCase
         $method = new ReflectionMethod('\ID\Correios\CalculadoraFrete', 'getWsCorreios');
         $method->setAccessible(true);
 
-        $this->assertInstanceOf('\ID\Correios\WsCorreios', $method->invoke($this->object, '06870000', 0.800));
+        $this->assertInstanceOf('\ID\Correios\WsCorreios', $method->invoke($this->object, '06870000', 0.581));
     }
 
     /**
