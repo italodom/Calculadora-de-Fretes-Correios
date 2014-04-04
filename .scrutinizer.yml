@@ -3,4 +3,4 @@ tools:
     php_analyzer:
         config:
             metrics_lack_of_cohesion_methods:
-                enabled: false        
+                enabled: true        
