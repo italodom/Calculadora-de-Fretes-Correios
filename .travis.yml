@@ -1,5 +1,5 @@
 language: php
-script: bin/phpunit Tests/
+script: vendor/bin/phpunit Tests/
 
 php:
   - 5.4
