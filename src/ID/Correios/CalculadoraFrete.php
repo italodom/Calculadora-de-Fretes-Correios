@@ -56,7 +56,7 @@ class CalculadoraFrete
      */
     public function calcular($cepDestino, $peso)
     {
-        $wsCorreios = $this->getWsCorreios();
+        $wsCorreios = $this->getWsCorreios($cepDestino, $peso);
 
         $uri = sprintf(
             '%s?%s',
@@ -114,7 +114,7 @@ class CalculadoraFrete
     /**
      * @return \ID\Correios\WsCorreios
      */
-    private function getWsCorreios()
+    private function getWsCorreios($cepDestino, $peso)
     {
         $wsCorreios = new WsCorreios();
         $wsCorreios
