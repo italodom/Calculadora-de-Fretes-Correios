@@ -240,10 +240,6 @@ class WsCorreios
 
     public function setVlComprimento($vlComprimento)
     {
-        if ($vlComprimento < 16) {
-            throw new InvalidArgumentException('A largura não pode ser inferior a 11 cm.');
-        }
-
         $this->vlComprimento = $vlComprimento;
 
         return $this;
@@ -258,10 +254,6 @@ class WsCorreios
 
     public function setVlLargura($vlLargura)
     {
-        if ($vlLargura < 11) {
-            throw new InvalidArgumentException('O comprimento nao pode ser inferior a 16 cm.');
-        }
-
         $this->vlLargura = $vlLargura;
 
         return $this;
