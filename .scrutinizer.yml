@@ -1,3 +1,7 @@
 tools:
     external_code_coverage:
         timeout: 600 # Timeout in seconds.
+    php_analyzer:
+        config:
+            metrics_lack_of_cohesion_methods:
+                enabled: false        
