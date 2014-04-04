@@ -56,18 +56,7 @@ class CalculadoraFrete
      */
     public function calcular($cepDestino, $peso)
     {
-        $wsCorreios = new WsCorreios();
-        $wsCorreios
-            ->setCdServico($this->codServico)
-            ->setCepOrigem('05425902')
-            ->setCepDestino($cepDestino)
-            ->setVlPeso($peso)
-            ->setCdFormato($this->formato)
-            ->setVlComprimento(16)
-            ->setVlAltura(0)
-            ->setVlLargura(11)
-            ->setVlDiametro(0)
-            ->setVlValorDeclarado($this->valorDesclarado);
+        $wsCorreios = $this->getWsCorreios();
 
         $uri = sprintf(
             '%s?%s',
@@ -120,6 +109,27 @@ class CalculadoraFrete
             ->setEntregaSabado(($retorno->EntregaSabado == 'S') ? true : false);
 
         return $calculoPrecoPrazo;
+    }
+
+    /**
+     * @return \ID\Correios\WsCorreios
+     */
+    private function getWsCorreios()
+    {
+        $wsCorreios = new WsCorreios();
+        $wsCorreios
+            ->setCdServico($this->codServico)
+            ->setCepOrigem('05425902')
+            ->setCepDestino($cepDestino)
+            ->setVlPeso($peso)
+            ->setCdFormato($this->formato)
+            ->setVlComprimento(16)
+            ->setVlAltura(0)
+            ->setVlLargura(11)
+            ->setVlDiametro(0)
+            ->setVlValorDeclarado($this->valorDesclarado);
+
+        return $wsCorreios;
     }
 
 }
