@@ -1,14 +1,9 @@
 language: php
 script: 
     - vendor/bin/phpunit --coverage-clover=coverage.clover Tests/
-    - wget https://scrutinizer-ci.com/ocular.phar
-    - php ocular.phar code-coverage:upload --access-token="27bc2a049654758b7e444d1dd549cc9ecc1a7e60eae8a197ed77bbcd0f62bfcc" --format=php-clover coverage.clover
 
 php:
     - 5.4
 
 before_script:
     - "composer install --dev --verbose"
-    
-before_install:
-    - php /home/travis/.phpenv/versions/5.4.25/bin/composer.phar self-update
